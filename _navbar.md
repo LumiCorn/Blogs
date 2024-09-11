@@ -1,6 +1,6 @@
 - [<span class="iconfont icon-icon_fabu"></span> 博客/Wiki首页](README.md)
 
-- - [<span class="iconfont icon-book3"></span> LumiDocs首页](/LumiDocs/README.md)
+- [<span class="iconfont icon-book3"></span> LumiDocs首页](/LumiDocs/README.md)
 
 - [<span class="iconfont icon-book3"></span> Bilibili频道](https://space.bilibili.com/234052228)
 
