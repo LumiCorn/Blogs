@@ -8,4 +8,4 @@
 
 - [<i class="fab fa-youtube"></i> Youtube频道](https://www.youtube.com/@lumicornx9944)
 
-- [<i class="fab fa-tiktok"></i> 抖音账号](https://v.douyin.com/ike1MFBr/ 3@3.com :1pm)
+- [<i class="fab fa-tiktok"></i> 抖音账号](https://v.douyin.com/ike1MFBr)
