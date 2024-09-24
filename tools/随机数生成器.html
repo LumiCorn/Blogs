@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -19,7 +20,7 @@
                         radial-gradient(circle at 40% 60%, rgba(186, 104, 200, 0.15), transparent 60%),
                         white;
             background-size: 200% 200%;
-            animation: moveBackground 60s infinite linear;
+            animation: moveBackground 30s infinite linear;
         }
         
         @keyframes moveBackground {
@@ -32,11 +33,25 @@
         }
 
         .container {
+            display: block;
+            margin: 0 auto;
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            max-width: 75%;
+            max-height: 80vh;
+            overflow-y:auto;
+            position: relative;
+            transition: all 2s ease-in-out;
+            
+        }
+        
+        .container.loaded {
+            width:80%;
+            opacity:1;
+            
         }
 
         .output {
@@ -66,21 +81,25 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
         .local-info {
-            position: fixed;
-            bottom: 40px; /* 放在页脚上方 */
-            left: 10px;
+            display:block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            clear: both;
             color: rgba(0, 0, 0, 0.3); /* 非常淡的黑色文字 */
             font-size: 0.8em;
             font-style: bold;
         }
+        
         .local-info-eng {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            color: rgba(0, 0, 0, 0.2);
+            bottom: 15px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.4);
             font-size: 0.2em;
-            font-style: italic;
+            font-style: bold;
         }
 
         input[type="number"] {
@@ -91,12 +110,14 @@
         }
 
        button {
-            padding: 10px 20px;
+            padding: 10px 40px;
             font-size: 1em;
             cursor: pointer;
             background-color: #BA68C8; /* 与背景浅紫色相近 */
             color: white;
             border: none;
+            margin-top: 10px;
+            width: 100%;
             border-radius: 5px;
         }
         
@@ -105,9 +126,9 @@
         }
     </style>
 </head>
-<div class="local-info">数据仅在本地处理。此工具由您的设备强力驱动。</div>
+
 <div class="local-info-eng">
-LumiDocs Tools only runs on device. All data will not be uploaded.
+Powered on Device. Designed by LumiCornX, All Rights Reserved. LumiDocs 2024
 </div>
 
 <!--
@@ -133,14 +154,15 @@ LumiDocs Tools only runs on device. All data will not be uploaded.
     </div>
 
     <div>
-        <label for="quantity">数量：</label>
+        <label for="quantity">生成量：</label>
         <input type="number" id="quantity" value="1">
     </div>
 
     <button onclick="generateRandomNumbers()">生成</button>
+
 </div>
 
-
+<div class="local-info">数据仅在本地处理。此工具由您的设备强力驱动。</div>
     
 <script>
     function generateRandomNumbers() {
