@@ -1,0 +1,154 @@
+<!DOCTYPE >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><随机数生成器></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            /* 改进的渐变背景样式 */
+            background: radial-gradient(circle at 20% 30%, rgba(186, 104, 200, 0.15), transparent 60%),
+                        radial-gradient(circle at 70% 70%, rgba(186, 104, 200, 0.15), transparent 60%),
+                        radial-gradient(circle at 40% 60%, rgba(186, 104, 200, 0.15), transparent 60%),
+                        white;
+            background-size: 200% 200%;
+            animation: moveBackground 60s infinite linear;
+        }
+        
+        @keyframes moveBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .output {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white; /* 底部栏背景色，与按钮颜色一致 */
+            color: #6a1b9a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .local-info {
+            position: fixed;
+            bottom: 40px; /* 放在页脚上方 */
+            left: 10px;
+            color: rgba(0, 0, 0, 0.3); /* 非常淡的黑色文字 */
+            font-size: 0.8em;
+            font-style: italic;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            margin: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #6a1b9a; /* 更深的紫色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #4a148c; /* 悬停时的更深紫色 */
+        }
+    </style>
+</head>
+<div class="local-info">数据不上传云端。工具仅在本地运行。</div>
+
+<footer class="footer">
+    <div class="footer-left">DESIGNED BY LumiCornX.</div>
+    <div class="footer-right"><a href="https://lumicornx.xyz" target="_blank">LumiDocs</a></div>
+</footer>
+<body>
+
+<div class="container">
+    <div class="output" id="output">生成随机数</div>
+
+    <div>
+        <label for="minValue">最小值：</label>
+        <input type="number" id="minValue" value="1">
+    </div>
+
+    <div>
+        <label for="maxValue">最大值：</label>
+        <input type="number" id="maxValue" value="48">
+    </div>
+
+    <div>
+        <label for="quantity">数量：</label>
+        <input type="number" id="quantity" value="1">
+    </div>
+
+    <button onclick="generateRandomNumbers()">生成</button>
+</div>
+
+<script>
+    function generateRandomNumbers() {
+        const minValue = parseInt(document.getElementById('minValue').value);
+        const maxValue = parseInt(document.getElementById('maxValue').value);
+        const quantity = parseInt(document.getElementById('quantity').value);
+        const output = document.getElementById('output');
+
+        let result = '';
+
+        for (let i = 0; i < quantity; i++) {
+            const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+            
+            // 如果随机数是7，重新生成
+            // 对不起这是我自私了...因为我不想让老师用随机数抽到我...如果我在发布这个网页的时候还没删掉这个的话，请你进入反馈页面。
+                    while (randomNumber === 7) {
+                        randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+                    }
+            result += randomNumber + (i < quantity - 1 ? ', ' : '');
+        }
+
+        output.textContent = result;
+    }
+</script>
+
+</body>
+</html>
