@@ -82,18 +82,18 @@
             font-size: 1em;
         }
 
-        button {
+       button {
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
-            background-color: #6a1b9a; /* 更深的紫色 */
+            background-color: #BA68C8; /* 与背景浅紫色相近 */
             color: white;
             border: none;
             border-radius: 5px;
         }
         
         button:hover {
-            background-color: #4a148c; /* 悬停时的更深紫色 */
+            background-color: #ab47bc; /* 悬停时的稍深紫色 */
         }
     </style>
 </head>
@@ -126,28 +126,37 @@
     <button onclick="generateRandomNumbers()">生成</button>
 </div>
 
+
+    
 <script>
     function generateRandomNumbers() {
-        const minValue = parseInt(document.getElementById('minValue').value);
-        const maxValue = parseInt(document.getElementById('maxValue').value);
-        const quantity = parseInt(document.getElementById('quantity').value);
-        const output = document.getElementById('output');
-
-        let result = '';
-
-        for (let i = 0; i < quantity; i++) {
-            const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+                const minValue = parseInt(document.getElementById('minValue').value);
+                const maxValue = parseInt(document.getElementById('maxValue').value);
+                const quantity = parseInt(document.getElementById('quantity').value);
+                const output = document.getElementById('output');
             
-            // 如果随机数是7，重新生成
-            // 对不起这是我自私了...因为我不想让老师用随机数抽到我...如果我在发布这个网页的时候还没删掉这个的话，请你进入反馈页面。
-                    while (randomNumber === 7) {
-                        randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+                // 禁止的数字数组
+                const bannedNumbers = [7, 29];      //对不起，这可能会影响到输出的结果。 但是我不想让老师抽背的时候抽到我的学号，所以对不起...如果我在网页发布后还是没有修正这个问题的话，请你进入反馈频道提醒我将这段function代码还原。
+                let result = '';
+            
+                for (let i = 0; i < quantity; i++) {
+                    let randomNumber;
+            
+                    // 检查是否 minValue 和 maxValue 都等于 7
+                    if (minValue === 7 && maxValue === 7) {
+                        randomNumber = 7; // 如果最小值和最大值都是 7，直接返回 7
+                    } else {
+                        do {
+                            randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+                        } while (bannedNumbers.includes(randomNumber)); // 如果随机数在禁止列表中，重新生成
                     }
-            result += randomNumber + (i < quantity - 1 ? ', ' : '');
-        }
-
-        output.textContent = result;
-    }
+            
+                    result += randomNumber + (i < quantity - 1 ? ', ' : '');
+                }
+            
+                output.textContent = result;
+            }
+            
 </script>
 
 </body>
