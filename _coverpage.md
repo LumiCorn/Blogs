@@ -15,6 +15,6 @@
 
 <!-- 背景色 -->
 
-![color](#fff)
+![color](#ffffff)
 
 
