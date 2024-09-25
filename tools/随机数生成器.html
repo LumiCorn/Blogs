@@ -1,5 +1,16 @@
 <!DOCTYPE >
 <html lang="en">
+<!--
+你好啊，我相信你是不小心按到了F12而不小心打开了开发者工具。
+这只是一个随机数生成器，我觉得这并没有什么技术含量，所以我就不像其他的网站那样做数据混淆了。
+我在这里面藏了很多小东西，你也可以看看我都藏了些什么。
+其实比我高会做HTML，因为我也只是一个文科生。所以我把javascript、css全部都塞到这个html里了，所以你可以将这个网页保存，可以100%地运行在你设备上，而不会像其他的网站那样失去了UI。
+我用代码证明你的所有数据不会被上传。完全是因为我买不起服务器啦...
+前文写了一些css，也不是特别好看啦。
+中间就是页面内容
+结尾的javascript就是生成随机数的主要核心了。
+欢迎你浏览LumiDocs。
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +28,11 @@
             /* 改进的渐变背景样式 */
             background: radial-gradient(circle at 20% 30%, rgba(186, 104, 200, 0.15), transparent 60%),
                         radial-gradient(circle at 70% 70%, rgba(186, 104, 200, 0.15), transparent 60%),
-                        radial-gradient(circle at 40% 60%, rgba(186, 104, 200, 0.15), transparent 60%),
+                        radial-gradient(circle at 40% 60%, rgba(186, 104, 200, 0.15), transparent 100%),
                         white;
             background-size: 200% 200%;
-            animation: moveBackground 30s infinite linear;
+   /* 使用 alternate 让动画往返播放 */
+                animation: moveBackground 30s infinite alternate ease-in-out;
         }
         
         @keyframes moveBackground {
@@ -35,22 +47,24 @@
         .container {
             display: block;
             margin: 0 auto;
+            margin-top:10px;
             background-color: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 75%;
-            max-height: 80vh;
+            max-width:80%;
+            max-height: 10vh;
             overflow-y:auto;
             position: relative;
-            transition: all 2s ease-in-out;
+            transition: all 0.8s cubic-bezier(0.6, 0, 0.3, 1);
+            width:0%;
             
         }
         
-        .container.loaded {
-            width:80%;
-            opacity:1;
+        .loaded {
+            width:auto;
+            max-height:80vh;
             
         }
 
@@ -84,7 +98,7 @@
         
         .local-info {
             display:block;
-            margin-top: 20px;
+            margin-top: 15px;
             width: 100%;
             text-align: center;
             clear: both;
@@ -118,7 +132,7 @@
             border: none;
             margin-top: 10px;
             width: 100%;
-            border-radius: 5px;
+            border-radius: 10px;
         }
         
         button:hover {
@@ -132,6 +146,7 @@ Powered on Device. Designed by LumiCornX, All Rights Reserved. LumiDocs 2024
 </div>
 
 <!--
+//本来想加个页脚的，但是感觉好丑所以不加了。
 <footer class="footer">
     <div class="footer-left">DESIGNED BY LumiCornX.</div>
     <div class="footer-right"><a href="https://lumicornx.xyz" target="_blank">LumiDocs</a></div>
@@ -165,6 +180,12 @@ Powered on Device. Designed by LumiCornX, All Rights Reserved. LumiDocs 2024
 <div class="local-info">数据仅在本地处理。此工具由您的设备强力驱动。</div>
     
 <script>
+
+    window.onload = function() {
+        document.querySelector('.container').classList.add('loaded');
+    };
+
+
     function generateRandomNumbers() {
                 const minValue = parseInt(document.getElementById('minValue').value);
                 const maxValue = parseInt(document.getElementById('maxValue').value);
@@ -191,6 +212,10 @@ Powered on Device. Designed by LumiCornX, All Rights Reserved. LumiDocs 2024
                 }
             
                 output.textContent = result;
+                
+                 // 重新调整container的高度
+                    const container = document.querySelector('.container');
+                    container.style.maxHeight = container.scrollHeight + 'px'; // 设置container的高度为内容高度
             }
             
 </script>
