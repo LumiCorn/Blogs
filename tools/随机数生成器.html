@@ -26,31 +26,25 @@
     margin: 0;
     background-color: #f0f0f0;
     
-    /* 使用三种不同深浅的紫色调，且圆形大小缩小 */
-    background: radial-gradient(circle at 20% 30%, rgba(98, 0, 130, 0.8), transparent 40%),  /* 深紫色 */
-                radial-gradient(circle at 60% 70%, rgba(150, 100, 200, 0.6), transparent 50%), /* 中紫色 */
-                radial-gradient(circle at 80% 40%, rgba(200, 150, 230, 0.4), transparent 40%); /* 浅紫色 */
+    /* 使用淡色系圆形，加入浅粉色和非常浅的黄色 */
+    background: radial-gradient(circle at 20% 30%, rgba(200, 150, 230, 0.4), transparent 40%),  /* 浅紫色 */
+                radial-gradient(circle at 60% 70%, rgba(255, 182, 193, 0.6), transparent 50%), /* 浅粉色 */
+                radial-gradient(circle at 80% 40%, rgba(250, 250, 210, 0.4), transparent 40%), /* 非常浅的黄色 */
+                radial-gradient(circle at 40% 60%, rgba(230, 200, 255, 0.2), transparent 40%); /* 更淡的浅紫色 */
     
-    background-size: 100% 100%;  /* 调整背景尺寸，不再覆盖整个屏幕 */
+    background-size: 100% 100%;  /* 不再缩放 */
     animation: moveBackground 30s infinite alternate ease-in-out; /* 来回移动 */
 }
 
-/* 圆形自由移动和大小变化动画 */
+/* 圆形自由移动动画，不再缩放 */
 @keyframes moveBackground {
     0% {
         background-position: 0 0;
-        background-size: 80% 80%; /* 初始背景较小 */
-    }
-    50% {
-        background-position: 50% 50%;
-        background-size: 90% 90%; /* 背景在中间阶段稍微变大 */
     }
     100% {
         background-position: 100% 100%;
-        background-size: 100% 100%; /* 背景达到最大但不超过屏幕 */
     }
 }
-
         .container {
             display: block;
             margin: 0 auto;
